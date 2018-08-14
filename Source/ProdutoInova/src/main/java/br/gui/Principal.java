@@ -14,8 +14,9 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    public Principal(String arg) {
         initComponents();
+        this.JCustomer.setText(arg);
         this.setSize(1024, 768);
     }
 
@@ -30,6 +31,7 @@ public class Principal extends javax.swing.JFrame {
 
         jToolBar2 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+        JCustomer = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,6 +48,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jToolBar2.add(jButton1);
+
+        JCustomer.setText("                                     Cliente não identificado");
+        jToolBar2.add(JCustomer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +84,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    private static String customerName;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -102,16 +109,21 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+         customerName = "                       === Cliente nao identificado ===                    ";
+        if (args.length > 0) {
+            customerName = "                                       ======" + args[0] + " ===========";
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+
+                new Principal(customerName).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JCustomer;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JToolBar jToolBar2;
